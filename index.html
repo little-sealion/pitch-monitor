@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Real-Time Pitch Monitor</title>
+  <title>实时音准监测仪</title>
   <style>
     :root {
       --bg-0: #0f172a;
@@ -206,24 +206,24 @@
 <body>
   <main class="app">
     <div class="top-row">
-      <p id="status">Ready. Click start to enable the microphone.</p>
-      <div class="range-switch" role="group" aria-label="Vocal range">
-        <button id="maleBtn" type="button" aria-pressed="false">Male</button>
-        <button id="femaleBtn" type="button" class="active" aria-pressed="true">Female</button>
+      <p id="status">准备就绪。点击开始即可启用麦克风。</p>
+      <div class="range-switch" role="group" aria-label="音域模式">
+        <button id="maleBtn" type="button" aria-pressed="false">男声</button>
+        <button id="femaleBtn" type="button" class="active" aria-pressed="true">女声</button>
       </div>
-      <button id="toggleMicBtn" type="button">Start Microphone</button>
+      <button id="toggleMicBtn" type="button">开始麦克风</button>
     </div>
 
     <section class="pitch-readout" aria-live="polite">
       <h1 id="noteDisplay">--</h1>
-      <p id="centsDisplay">No pitch detected</p>
+      <p id="centsDisplay">未检测到音高</p>
     </section>
 
     <section class="chart-wrap">
       <canvas id="pitchCanvas" width="900" height="340"></canvas>
     </section>
 
-    <p class="meta">Window: last 12 seconds | Buffer: 2048 samples</p>
+    <p class="meta">窗口：最近 12 秒 | 缓冲区：2048 采样</p>
   </main>
 
   <script>
@@ -369,14 +369,14 @@
     function updateTextDisplay(noteData) {
       if (!noteData) {
         noteEl.textContent = "--";
-        centsEl.textContent = "No pitch detected";
+        centsEl.textContent = "未检测到音高";
         centsEl.style.color = "var(--muted)";
         return;
       }
 
       noteEl.textContent = noteData.noteName;
       const sign = noteData.cents > 0 ? "+" : "";
-      centsEl.textContent = `${sign}${noteData.cents} cents (${noteData.frequency.toFixed(1)} Hz)`;
+      centsEl.textContent = `${sign}${noteData.cents} 音分 (${noteData.frequency.toFixed(1)} Hz)`;
 
       const absCents = Math.abs(noteData.cents);
       if (absCents <= 10) {
@@ -479,7 +479,7 @@
         }
       }
 
-      // Draw the exact requested Y-axis note labels.
+      // 绘制当前模式对应的 Y 轴音名标注。
       ctx.fillStyle = "rgba(226, 232, 240, 0.82)";
       ctx.font = "12px Avenir Next, Segoe UI, sans-serif";
       ctx.textAlign = "right";
@@ -549,8 +549,8 @@
       ctx.fillStyle = "rgba(148, 163, 184, 0.8)";
       ctx.font = "12px Avenir Next, Segoe UI, sans-serif";
       ctx.textAlign = "left";
-      ctx.fillText("Pitch curve (newest on the right)", leftPad + 6, topPad + 14);
-      ctx.fillText("+/-50c lines are dashed", leftPad + 6, topPad + 30);
+      ctx.fillText("音高曲线（右侧为最新）", leftPad + 6, topPad + 14);
+      ctx.fillText("虚线表示 ±50 音分", leftPad + 6, topPad + 30);
     }
 
     function animationLoop() {
@@ -599,16 +599,16 @@
         scriptNode.connect(audioCtx.destination);
 
         isRunning = true;
-        buttonEl.textContent = "Stop Microphone";
+        buttonEl.textContent = "停止麦克风";
         buttonEl.classList.add("running");
-        statusEl.textContent = "Microphone active. Start singing to monitor your pitch.";
+        statusEl.textContent = "麦克风已启用。开始唱歌即可查看音准。";
 
         if (!animationId) {
           animationLoop();
         }
       } catch (error) {
         console.error(error);
-        statusEl.textContent = "Could not start microphone. Check browser permission and HTTPS/localhost context.";
+        statusEl.textContent = "无法启动麦克风，请检查浏览器权限。";
         await stopMicrophone();
       }
     }
@@ -637,9 +637,9 @@
         audioCtx = null;
       }
 
-      buttonEl.textContent = "Start Microphone";
+      buttonEl.textContent = "开始麦克风";
       buttonEl.classList.remove("running");
-      statusEl.textContent = "Stopped. Click start to enable the microphone.";
+      statusEl.textContent = "已停止。点击开始可重新启用麦克风。";
       updateTextDisplay(null);
 
       if (animationId) {
