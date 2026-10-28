@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>实时音准监测仪</title>
+  <title>音高检测与音乐课程</title>
   <style>
     :root {
       --bg-0: #0f172a;
@@ -12,7 +12,6 @@
       --text: #e2e8f0;
       --muted: #94a3b8;
       --accent: #22d3ee;
-      --accent-2: #f59e0b;
       --good: #22c55e;
       --warn: #f97316;
       --bad: #ef4444;
@@ -21,6 +20,9 @@
       --curve: #22d3ee;
       --curve-muted: rgba(34, 211, 238, 0.25);
       --shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
+      --line: rgba(148, 163, 184, 0.22);
+      --surface: rgba(2, 6, 23, 0.35);
+      --surface-strong: rgba(15, 23, 42, 0.75);
     }
 
     * {
@@ -38,8 +40,8 @@
         linear-gradient(165deg, var(--bg-0), var(--bg-1));
       display: flex;
       justify-content: center;
-      align-items: center;
-      padding: 24px;
+      align-items: flex-start;
+      padding: 20px;
     }
 
     .app {
@@ -49,10 +51,52 @@
       border-radius: 18px;
       backdrop-filter: blur(7px);
       box-shadow: var(--shadow);
-      padding: 22px;
+      padding: 18px;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 18px;
+      gap: 14px;
+    }
+
+    .main-tabs {
+      display: inline-flex;
+      gap: 6px;
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      align-self: start;
+      max-width: 100%;
+    }
+
+    .main-tabs button {
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .main-tabs button[aria-selected="true"] {
+      background: linear-gradient(145deg, #0ea5e9, #0284c7);
+      color: #e0f2fe;
+    }
+
+    .main-tabs button:focus-visible,
+    .range-switch button:focus-visible,
+    #toggleMicBtn:focus-visible,
+    .accordion-trigger:focus-visible,
+    .video-link:focus-visible {
+      outline: 2px solid #38bdf8;
+      outline-offset: 2px;
+    }
+
+    .module-panel[hidden] {
+      display: none !important;
     }
 
     .top-row {
@@ -169,6 +213,159 @@
       color: var(--muted);
       font-size: 0.88rem;
       text-align: right;
+      margin: 0;
+    }
+
+    .lessons-wrap {
+      display: grid;
+      gap: 10px;
+    }
+
+    .lessons-status {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .stage-card,
+    .lesson-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .lesson-card {
+      border-radius: 8px;
+    }
+
+    .stage-body {
+      padding: 4px 8px 8px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .stage-body[hidden] {
+      display: none !important;
+    }
+
+    .lesson-body {
+      padding: 10px 12px 12px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .lesson-body[hidden] {
+      display: none !important;
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stage-card > .accordion-trigger {
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 12px;
+    }
+
+    .lesson-card > .accordion-trigger {
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 10px 12px;
+    }
+
+    .accordion-title {
+      flex: 1;
+      min-width: 0;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      line-height: 1.35;
+    }
+
+    .chevron {
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-size: 0.9rem;
+      transform-origin: center;
+      transition: transform 0.2s ease;
+    }
+
+    .accordion-trigger[aria-expanded="true"] .chevron {
+      transform: rotate(90deg);
+    }
+
+    .exercise-card {
+      border-radius: 8px;
+      padding: 10px;
+      background: rgba(15, 23, 42, 0.45);
+      display: grid;
+      gap: 8px;
+    }
+
+    .exercise-title {
+      margin: 0;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #dbeafe;
+    }
+
+    .exercise-section-title {
+      margin: 0;
+      font-size: 0.84rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .exercise-description {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      color: #dbeafe;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .exercise-audio {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .video-link {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 8px 14px;
+      border: 1px solid rgba(14, 165, 233, 0.5);
+      background: rgba(14, 165, 233, 0.14);
+      color: #bae6fd;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .video-link:hover {
+      background: rgba(14, 165, 233, 0.22);
+    }
+
+    .empty-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.4;
     }
 
     @media (max-width: 720px) {
@@ -177,7 +374,7 @@
       }
 
       .app {
-        padding: 14px;
+        padding: 12px;
       }
 
       .top-row {
@@ -193,6 +390,15 @@
         justify-content: center;
       }
 
+      .main-tabs {
+        width: 100%;
+      }
+
+      .main-tabs button {
+        flex: 1;
+        text-align: center;
+      }
+
       #pitchCanvas {
         height: 290px;
       }
@@ -200,33 +406,57 @@
       .meta {
         text-align: left;
       }
+
+      .accordion-trigger {
+        min-height: 44px;
+      }
     }
   </style>
 </head>
 <body>
   <main class="app">
-    <div class="top-row">
-      <p id="status">准备就绪。点击开始即可启用麦克风。</p>
-      <div class="range-switch" role="group" aria-label="音域模式">
-        <button id="maleBtn" type="button" aria-pressed="false">男声</button>
-        <button id="femaleBtn" type="button" class="active" aria-pressed="true">女声</button>
+    <nav class="main-tabs" role="tablist" aria-label="模块切换">
+      <button id="tabPitch" type="button" role="tab" aria-selected="true" aria-controls="pitchPanel">音高检测</button>
+      <button id="tabLessons" type="button" role="tab" aria-selected="false" aria-controls="lessonsPanel">音乐课程</button>
+    </nav>
+
+    <section id="pitchPanel" class="module-panel" role="tabpanel" aria-labelledby="tabPitch">
+      <div class="top-row">
+        <p id="status">准备就绪。点击开始即可启用麦克风。</p>
+        <div class="range-switch" role="group" aria-label="音域模式">
+          <button id="maleBtn" type="button" aria-pressed="false">男声</button>
+          <button id="femaleBtn" type="button" class="active" aria-pressed="true">女声</button>
+        </div>
+        <button id="toggleMicBtn" type="button">开始麦克风</button>
       </div>
-      <button id="toggleMicBtn" type="button">开始麦克风</button>
-    </div>
 
-    <section class="pitch-readout" aria-live="polite">
-      <h1 id="noteDisplay">--</h1>
-      <p id="centsDisplay">未检测到音高</p>
+      <section class="pitch-readout" aria-live="polite">
+        <h1 id="noteDisplay">--</h1>
+        <p id="centsDisplay">未检测到音高</p>
+      </section>
+
+      <section class="chart-wrap">
+        <canvas id="pitchCanvas" width="900" height="340"></canvas>
+      </section>
+
+      <p class="meta">窗口：最近 12 秒 | 缓冲区：2048 采样</p>
     </section>
 
-    <section class="chart-wrap">
-      <canvas id="pitchCanvas" width="900" height="340"></canvas>
+    <section id="lessonsPanel" class="module-panel lessons-wrap" role="tabpanel" aria-labelledby="tabLessons" hidden>
+      <p id="lessonsStatus" class="lessons-status">正在加载课程……</p>
+      <div id="lessonsContainer" hidden></div>
     </section>
-
-    <p class="meta">窗口：最近 12 秒 | 缓冲区：2048 采样</p>
   </main>
 
+  <script src="./data/lessons.js"></script>
   <script>
+    const tabPitchEl = document.getElementById("tabPitch");
+    const tabLessonsEl = document.getElementById("tabLessons");
+    const pitchPanelEl = document.getElementById("pitchPanel");
+    const lessonsPanelEl = document.getElementById("lessonsPanel");
+    const lessonsStatusEl = document.getElementById("lessonsStatus");
+    const lessonsContainerEl = document.getElementById("lessonsContainer");
+
     const statusEl = document.getElementById("status");
     const buttonEl = document.getElementById("toggleMicBtn");
     const maleBtnEl = document.getElementById("maleBtn");
@@ -243,13 +473,13 @@
 
     const RANGE_PRESETS = {
       male: {
-        min: 48, // C3
-        max: 60, // C4
+        min: 48,
+        max: 60,
         axisLabels: [48, 50, 52, 53, 55, 57, 59, 60]
       },
       female: {
-        min: 60, // C4
-        max: 72, // C5
+        min: 60,
+        max: 72,
         axisLabels: [60, 62, 64, 65, 67, 69, 71, 72]
       }
     };
@@ -263,8 +493,210 @@
     let scriptNode = null;
     let isRunning = false;
     let animationId = null;
+    let stageContentIdSeed = 0;
+    let lessonContentIdSeed = 0;
 
     const pitchHistory = [];
+
+    function isNonEmptyText(value) {
+      return typeof value === "string" && value.trim() !== "";
+    }
+
+    function toSafeArray(value) {
+      return Array.isArray(value) ? value : [];
+    }
+
+    function createEl(tagName, className) {
+      const element = document.createElement(tagName);
+      if (className) {
+        element.className = className;
+      }
+      return element;
+    }
+
+    function togglePanel(panelName) {
+      const showPitch = panelName === "pitch";
+      pitchPanelEl.hidden = !showPitch;
+      lessonsPanelEl.hidden = showPitch;
+      tabPitchEl.setAttribute("aria-selected", String(showPitch));
+      tabLessonsEl.setAttribute("aria-selected", String(!showPitch));
+      if (showPitch) {
+        drawPitchChart();
+      }
+    }
+
+    tabPitchEl.addEventListener("click", () => {
+      togglePanel("pitch");
+    });
+
+    tabLessonsEl.addEventListener("click", () => {
+      togglePanel("lessons");
+    });
+
+    function makeAccordionButton(title, contentId, expanded, levelText) {
+      const trigger = createEl("button", "accordion-trigger");
+      trigger.type = "button";
+      trigger.setAttribute("aria-controls", contentId);
+      trigger.setAttribute("aria-expanded", String(expanded));
+      trigger.setAttribute("aria-label", `${expanded ? "收起" : "展开"}${title}`);
+
+      const titleSpan = createEl("span", "accordion-title");
+      titleSpan.textContent = title;
+      const iconSpan = createEl("span", "chevron");
+      iconSpan.textContent = "▶";
+      iconSpan.setAttribute("aria-hidden", "true");
+
+      trigger.appendChild(titleSpan);
+      trigger.appendChild(iconSpan);
+
+      if (levelText) {
+        trigger.dataset.level = levelText;
+      }
+
+      return trigger;
+    }
+
+    function setAccordionState(trigger, body, expanded) {
+      trigger.setAttribute("aria-expanded", String(expanded));
+      const titleText = trigger.querySelector(".accordion-title")?.textContent || "";
+      trigger.setAttribute("aria-label", `${expanded ? "收起" : "展开"}${titleText}`);
+      body.hidden = !expanded;
+    }
+
+    function createExerciseCard(exercise) {
+      const exerciseCard = createEl("article", "exercise-card");
+      // const exerciseTitle = createEl("h4", "exercise-title");
+      // exerciseCard.appendChild(exerciseTitle);
+
+      if (isNonEmptyText(exercise?.description)) {
+        const titleEl = createEl("p", "exercise-section-title");
+        const descriptionEl = createEl("p", "exercise-description");
+        descriptionEl.textContent = exercise.description.trim();
+        exerciseCard.appendChild(titleEl);
+        exerciseCard.appendChild(descriptionEl);
+      }
+
+      if (isNonEmptyText(exercise?.audioUrl)) {
+        const audioTitleEl = createEl("p", "exercise-section-title");
+        audioTitleEl.textContent = "音频练习";
+        const audioEl = createEl("audio", "exercise-audio");
+        audioEl.controls = true;
+        audioEl.preload = "metadata";
+        audioEl.src = exercise.audioUrl.trim();
+        exerciseCard.appendChild(audioTitleEl);
+        exerciseCard.appendChild(audioEl);
+      }
+
+      if (isNonEmptyText(exercise?.videoUrl)) {
+        const videoLink = createEl("a", "video-link");
+        videoLink.href = exercise.videoUrl.trim();
+        videoLink.target = "_blank";
+        videoLink.rel = "noopener noreferrer";
+        videoLink.textContent = "🎥 打开老师带练视频（在新窗口打开）";
+        videoLink.setAttribute("aria-label", "打开老师带练视频（在新窗口打开）");
+        exerciseCard.appendChild(videoLink);
+      }
+
+      return exerciseCard;
+    }
+
+    function buildLessonBody(lesson) {
+      const body = createEl("div", "lesson-body");
+      const exercises = toSafeArray(lesson?.exercises);
+
+      if (exercises.length === 0) {
+        const empty = createEl("p", "empty-note");
+        empty.textContent = "课程内容待补充";
+        body.appendChild(empty);
+        return body;
+      }
+
+      for (const exercise of exercises) {
+        body.appendChild(createExerciseCard(exercise));
+      }
+
+      return body;
+    }
+
+    function buildLessonsUI(stages) {
+      lessonsContainerEl.innerHTML = "";
+      stageContentIdSeed = 0;
+      lessonContentIdSeed = 0;
+
+      toSafeArray(stages).forEach((stage, stageIndex) => {
+        const stageCard = createEl("section", "stage-card");
+        const stageContentId = `stage-content-${stageContentIdSeed += 1}`;
+        const stageBody = createEl("div", "stage-body");
+        stageBody.id = stageContentId;
+        stageBody.hidden = true;
+
+        const stageTitle = isNonEmptyText(stage?.title) ? stage.title.trim() : `阶段 ${stageIndex + 1}`;
+        const stageTrigger = makeAccordionButton(stageTitle, stageContentId, false, "stage");
+
+        stageTrigger.addEventListener("click", () => {
+          const expanded = stageTrigger.getAttribute("aria-expanded") === "true";
+          setAccordionState(stageTrigger, stageBody, !expanded);
+        });
+
+        toSafeArray(stage?.lessons).forEach((lesson, lessonIndex) => {
+          const lessonCard = createEl("section", "lesson-card");
+          const lessonContentId = `lesson-content-${lessonContentIdSeed += 1}`;
+          const lessonTitle = isNonEmptyText(lesson?.title) ? lesson.title.trim() : `课程 ${lessonIndex + 1}`;
+          const lessonBody = buildLessonBody(lesson);
+          lessonBody.id = lessonContentId;
+          lessonBody.hidden = true;
+
+          const lessonTrigger = makeAccordionButton(lessonTitle, lessonContentId, false, "lesson");
+          lessonTrigger.addEventListener("click", () => {
+            const expanded = lessonTrigger.getAttribute("aria-expanded") === "true";
+            if (!expanded) {
+              const siblingTriggers = stageBody.querySelectorAll(".lesson-card > .accordion-trigger");
+              siblingTriggers.forEach((triggerEl) => {
+                if (triggerEl === lessonTrigger) {
+                  return;
+                }
+                const bodyId = triggerEl.getAttribute("aria-controls");
+                const bodyEl = bodyId ? document.getElementById(bodyId) : null;
+                if (bodyEl) {
+                  setAccordionState(triggerEl, bodyEl, false);
+                }
+              });
+            }
+            setAccordionState(lessonTrigger, lessonBody, !expanded);
+          });
+
+          lessonCard.appendChild(lessonTrigger);
+          lessonCard.appendChild(lessonBody);
+          stageBody.appendChild(lessonCard);
+        });
+
+        stageCard.appendChild(stageTrigger);
+        stageCard.appendChild(stageBody);
+        lessonsContainerEl.appendChild(stageCard);
+      });
+    }
+
+    function loadLessons() {
+      lessonsStatusEl.hidden = false;
+      lessonsStatusEl.textContent = "正在加载课程……";
+      lessonsContainerEl.hidden = true;
+
+      try {
+        if (!window.LESSONS_DATA || typeof window.LESSONS_DATA !== "object") {
+          throw new Error("课程数据未加载");
+        }
+        const stages = toSafeArray(window.LESSONS_DATA?.stages);
+        buildLessonsUI(stages);
+
+        lessonsStatusEl.hidden = true;
+        lessonsContainerEl.hidden = false;
+      } catch (error) {
+        console.error(error);
+        lessonsStatusEl.hidden = false;
+        lessonsStatusEl.textContent = "课程加载失败，请刷新页面后重试。";
+        lessonsContainerEl.hidden = true;
+      }
+    }
 
     function formatNoteName(midiInt) {
       const name = NOTE_NAMES[(midiInt + 1200) % 12];
@@ -298,7 +730,6 @@
       return Math.sqrt(sum / buffer.length);
     }
 
-    // Efficient YIN pitch detector for real-time use.
     function detectPitchYIN(buffer, sampleRate) {
       const threshold = 0.12;
       const probabilityThreshold = 0.1;
@@ -344,7 +775,6 @@
         return null;
       }
 
-      // Parabolic interpolation for sub-sample lag precision.
       const x0 = tauEstimate > 1 ? tauEstimate - 1 : tauEstimate;
       const x2 = tauEstimate + 1 < tauMax ? tauEstimate + 1 : tauEstimate;
 
@@ -454,7 +884,6 @@
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, width, height);
 
-      // Draw horizontal semitone grid lines.
       for (let midi = currentRange.min; midi <= currentRange.max; midi += 1) {
         const y = midiToY(midi, height, topPad, bottomPad);
         const isAxisNote = currentRange.axisLabels.includes(midi);
@@ -465,7 +894,6 @@
         ctx.lineTo(width - rightPad, y);
         ctx.stroke();
 
-        // Midpoint between semitones = +/-50 cents marker.
         if (midi < currentRange.max) {
           const yMid = midiToY(midi + 0.5, height, topPad, bottomPad);
           ctx.strokeStyle = "rgba(148, 163, 184, 0.1)";
@@ -479,7 +907,6 @@
         }
       }
 
-      // 绘制当前模式对应的 Y 轴音名标注。
       ctx.fillStyle = "rgba(226, 232, 240, 0.82)";
       ctx.font = "12px Avenir Next, Segoe UI, sans-serif";
       ctx.textAlign = "right";
@@ -500,7 +927,6 @@
       const timeStart = now - HISTORY_SECONDS;
       const plotWidth = width - leftPad - rightPad;
 
-      // Soft glow line underlay.
       ctx.strokeStyle = "var(--curve-muted)";
       ctx.lineWidth = 5;
       ctx.beginPath();
@@ -522,7 +948,6 @@
       }
       ctx.stroke();
 
-      // Main pitch curve.
       ctx.strokeStyle = "var(--curve)";
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -669,6 +1094,7 @@
     window.addEventListener("resize", drawPitchChart);
     setRangeMode("female");
     drawPitchChart();
+    loadLessons();
   </script>
 </body>
 </html>
