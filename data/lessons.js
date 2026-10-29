@@ -8,7 +8,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意气息稳定、音准控制和旋律连贯。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: ""
             }
           ]
         },
@@ -17,7 +17,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意呼吸支撑、发声稳定和换气节奏。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: ""
             }
           ]
         },
@@ -26,7 +26,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意拍点准确、节奏均匀和句子推进。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: ""
             }
           ]
         },
@@ -35,7 +35,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意口腔打开、共鸣位置和吐字清晰。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: ""
             }
           ]
         },
@@ -44,7 +44,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意音程衔接、音准稳定和气息连贯。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: ""
             }
           ]
         },
@@ -53,7 +53,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意读谱准确、音高稳定和句法连贯。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: ""
             }
           ]
         },
@@ -62,7 +62,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意跨音程发声位置和共鸣统一。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: ""
             }
           ]
         },
@@ -71,7 +71,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意读谱节奏、音准和咬字清晰度。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: ""
             }
           ]
         },
@@ -80,7 +80,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意与伴奏贴合、拍点稳定和情绪表达。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: ""
             }
           ]
         },
@@ -89,7 +89,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意句子连线、力度变化和呼吸规划。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: ""
             }
           ]
         },
@@ -98,7 +98,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意高低音衔接、气息支持和音色统一。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: ""
             }
           ]
         },
@@ -107,7 +107,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意音程识别、读谱准确和发声稳定。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E5%85%AD%E5%BA%A6%E4%B8%83%E5%BA%A6%E6%AD%8C%E8%B0%B1%E6%BC%94"
             }
           ]
         },
@@ -116,7 +116,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意旋律线条、咬字情感和演唱连贯。",
-              videoUrl: "https://blvip.dd.gzfeice.com/live/index?param=fQWMRH&termId=829456530414764033&resourceId=870168341094858753&isLiveReserve=false&isSmallClass=false"
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E6%B5%81%E8%A1%8C%E6%AD%8C%E6%9B%B2%E7%9A%84%E6%97%8B%E5%BE%8B.mp4"
             }
           ]
         }
