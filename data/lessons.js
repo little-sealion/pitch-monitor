@@ -8,7 +8,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意气息稳定、音准控制和旋律连贯。",
-              videoUrl: ""
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/C%E5%A4%A7%E8%B0%83%E9%9F%B3%E9%98%B6%E7%BB%83%E4%B9%A0.mp4"
             }
           ]
         },
@@ -17,7 +17,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意呼吸支撑、发声稳定和换气节奏。",
-              videoUrl: ""
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E6%8D%A2%E6%B0%94%E7%BB%83%E4%B9%A0.mp4"
             }
           ]
         },
@@ -26,7 +26,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意拍点准确、节奏均匀和句子推进。",
-              videoUrl: ""
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E8%8A%82%E5%A5%8F%E8%8A%82%E6%8B%8D%E7%BB%83%E4%B9%A0.mp4"
             }
           ]
         },
@@ -43,8 +43,12 @@ window.LESSONS_DATA = {
           title: "第五节 二三度模进",
           exercises: [
             {
-              description: "注意音程衔接、音准稳定和气息连贯。",
-              videoUrl: ""
+              description: "二度模进",
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E4%BA%8C%E5%BA%A6%E6%A8%A1%E8%BF%9B.mp4"
+            },
+            {
+              description: "三度模进",
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E4%B8%89%E5%BA%A6%E6%A8%A1%E8%BF%9B.mp4"
             }
           ]
         },
@@ -53,7 +57,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意读谱准确、音高稳定和句法连贯。",
-              videoUrl: ""
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E4%BA%8C%E4%B8%89%E5%BA%A6%E7%BB%83%E4%B9%A0%E6%9B%B2.mp4"
             }
           ]
         },
@@ -61,8 +65,12 @@ window.LESSONS_DATA = {
           title: "第七节 四五度模进",
           exercises: [
             {
-              description: "注意跨音程发声位置和共鸣统一。",
-              videoUrl: ""
+              description: "四度模进",
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E5%9B%9B%E5%BA%A6%E6%A8%A1%E8%BF%9B.mp4"
+            },
+            {
+              description: "五度模进",
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E4%BA%94%E5%BA%A6%E6%A8%A1%E8%BF%9B.mp4"
             }
           ]
         },
@@ -71,7 +79,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意读谱节奏、音准和咬字清晰度。",
-              videoUrl: ""
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E5%9B%9B%E4%BA%94%E5%BA%A6%E7%BB%83%E4%B9%A0%E6%9B%B2.mp4"
             }
           ]
         },
@@ -98,7 +106,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意高低音衔接、气息支持和音色统一。",
-              videoUrl: ""
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E5%85%AD%E5%BA%A6%E9%9F%B3%E7%A8%8B%E6%A8%A1%E8%BF%9B%E5%A5%B3%E5%A3%B0.mp4"
             }
           ]
         },
@@ -107,7 +115,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意音程识别、读谱准确和发声稳定。",
-              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E5%85%AD%E5%BA%A6%E4%B8%83%E5%BA%A6%E6%AD%8C%E8%B0%B1%E6%BC%94"
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E5%85%AD%E5%BA%A6%E4%B8%83%E5%BA%A6%E6%AD%8C%E8%B0%B1%E6%BC%94%E5%94%B1%E5%A5%B3%E5%A3%B0.mp4"
             }
           ]
         },
@@ -116,7 +124,7 @@ window.LESSONS_DATA = {
           exercises: [
             {
               description: "注意旋律线条、咬字情感和演唱连贯。",
-              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E6%B5%81%E8%A1%8C%E6%AD%8C%E6%9B%B2%E7%9A%84%E6%97%8B%E5%BE%8B.mp4"
+              videoUrl: "https://pub-22bb39176fff412399b6f780b5273294.r2.dev/videos/%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5/%E6%B5%81%E8%A1%8C%E6%AD%8C%E6%9B%B2%E7%9A%84%E6%97%8B%E5%BE%8B%E6%BC%94%E5%94%B1.mp4"
             }
           ]
         }
